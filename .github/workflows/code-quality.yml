@@ -1,0 +1,33 @@
+# .github/worflows/code-quality.yml
+name: Code Quality
+on: [ push, pull_request ]
+jobs:
+  code-quality:
+    name: PHPStan & PHP-CS-Fixer
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: [ '7.4' ]
+      fail-fast: false
+    steps:
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+
+      - uses: actions/checkout@v2
+
+      - name: Composer Update
+        run: composer update
+
+      - name: Composer Install
+        run: composer install --ansi --prefer-dist --no-interaction --no-progress
+      
+      - name: Composer Install PHP-CS-Fixer
+        run: cd tools/php-cs-fixer && composer install --ansi --prefer-dist --no-interaction --no-progress
+
+      - name: Run phpstan
+        run: vendor/bin/phpstan 
+
+      - name: Run cs Fixer
+        run: tools/php-cs-fixer/vendor/bin/php-cs-fixer fix
