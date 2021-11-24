@@ -1,9 +1,7 @@
 <?php
 
-
 $data = [1, 2];
 $a = [1 => 2];
-
 
 class Foo
 {
@@ -23,14 +21,12 @@ class Foo
                 echo $b;
             }
         }
-        echo $errorVar;
-
+        echo $erroVar;
     }
 }
-
 throw new Error(
-    'test',
-     500
+    'error test',
+    500
 );
 
 $foo = new Foo();
