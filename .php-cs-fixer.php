@@ -1,9 +1,9 @@
 <?php
 
 $finder = (new PhpCsFixer\Finder())
-    ->in(__DIR__,'src')
-    // ->notPath('config/test2.php')
-    // ->exclude('config')
+    ->in(__DIR__)
+    ->notPath('config/test2.php')
+    ->exclude('config')
 
 ;
 

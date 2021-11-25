@@ -21,15 +21,18 @@ class Foo
                 echo $b;
             }
         }
-        echo $erroVar;
+        // echo $ErrorVar;
+
     }
 }
+
 throw new Error(
     'error test',
     500
 );
 
 $foo = new Foo();
-$foo->bar(900);
+$foo
+   ->bar(900);
 
 var_dump($data);
