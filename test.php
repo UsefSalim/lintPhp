@@ -21,7 +21,9 @@ class Foo
                 echo $b;
             }
         }
-        // echo $ErrorVar;
+
+        echo $ErrorVar;
+
 
     }
 }
